@@ -104,11 +104,11 @@ actions:
 - validate_name_form
 forms:
   name_form:
-    contact_no:
-    - entity: number
-      type: from_text
     name:
     - entity: name
+      type: from_text
+    contact_no:
+    - entity: number
       type: from_text
     organisation:
     - entity: organisation
