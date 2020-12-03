@@ -1,0 +1,126 @@
+version: "2.0"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+- intent: faq/ask_questions
+  examples: |
+    - ask a question
+- intent: faq/ask_ai
+  examples: |
+    - What is AI?
+    - How do I digitalize?
+    - ai
+    - Do I need AI?
+- intent: faq/ask_nlp
+  examples: |
+    - What is NLP?
+    - What are the uses of NLP?
+    - What can you do with NLP?
+    - nlp
+    - What can nlp not do?
+- intent: request_consultation
+  examples: |
+    - request consultation
+    - Can i book a consultation?
+    - i want consultation
+    - i would like to get a consultation with dsac
+    - consultation with dsac
+    - talk to dsac
+    - dsac consultation
+    - sign up for consultation
+    - sign up for dsac consultation
+- intent: faq/ai_business
+  examples: |
+    - How will Ai help my business?
+- intent: mood_great
+  examples: |
+    - i'm great!
+    - ok
+    - doing ok
+    - great
+    - happy
+    - i'm ok
+    - ok ah
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+- intent: chitchat/bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+    - bot?
+    - are you a person?
+    - what's your name?
+- intent: chitchat/tell_joke
+  examples: |
+    - Tell me a joke
+    - tell me a joke
+    - say a joke
+    - funny joke
+    - tell me a funny joke
+- intent: reply_joke
+  examples: |
+    - reply joke
+    - bread
+    - coffeee
+- intent: play_video
+  examples: |
+    - show me the video
+    - show me the pokemon video
+    - play the pokemon video
+    - play video
+    - pokemon video play
+- intent: registration_success
+  examples: |
+    - registration success
+- intent: stop_registration
+  examples: |
+    - stop
+    - end
+    - Stop
+    - End
+    - stop registeration
+    - i don't want anymore
+    - stop registration

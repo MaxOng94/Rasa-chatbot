@@ -1,0 +1,70 @@
+version: "2.0"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_goodbye
+
+- story: play video story
+  steps:
+  - intent: play_video
+  - action: action_video
+
+- story: activate form and follow through
+  steps:
+  - intent : request_consultation
+  - action: action_reset_slots
+  - action: name_form
+  - active_loop: name_form #
+
+- story: faq jump to chitchat
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: faq
+  - action: utter_faq
+  - intent: chitchat/bot_challenge
+  - action: utter_chitchat/bot_challenge
+
+- story: reply joke
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: greet
+  - action: utter_greet
+  - intent: chitchat/tell_joke
+  - action: utter_chitchat
+  - intent: reply_joke
+  - action: utter_reply_joke
+
+# story of interrupting does not work
+# - story: user stops + wants to stop registration
+#   steps:
+#   - intent: request_consultation
+#   - action: action_reset_slots
+#   - action: name_form
+#   - active_loop: name_form
+#   - intent: stop_registration
+#   - action: action_deactivate_loop
+#   - active_loop: null
+#   - action: utter_data_removed
+
+
+# - story: user stops + continue registration
+#   steps:
+#   - intent: request_consultation
+#   - action: action_reset_slots
+#   - action: name_form
+#   - active_loop: name_form
+#   - intent: stop_registration
+#   - action: utter_ask_continue
+#   - intent: affirm
+#   - action: name_form
+#   - active_loop: null
+#   - slot_was_set:
+#     - requested_slot: null
+#   - action: action_submit

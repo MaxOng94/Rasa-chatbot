@@ -1,0 +1,115 @@
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet
+- goodbye
+- affirm
+- deny
+- bot_challenge
+- out_of_scope
+- faq
+- play_video
+- mood_great
+- request_consultation
+- chitchat
+- stop_registration
+- registration_success
+- nlu_fallback
+- reply_joke
+slots:
+  contact_no:
+    type: float
+    influence_conversation: false
+    max_value: 1.0
+    min_value: 0.0
+  name:
+    type: text
+    influence_conversation: false
+  organisation:
+    type: text
+    influence_conversation: false
+  requested_slot:
+    type: unfeaturized
+    influence_conversation: false
+responses:
+  utter_greet:
+  - buttons:
+    - payloads: ask a question
+      title: Ask a question
+    - payloads: /request_consultation
+      title: Sign up for consultation
+    - payloads: Tell me a joke
+      title: Tell me a joke
+    text: Hello! I am a Chatbot created by Singapore Poly's DSAC! What can I do for
+      you today?
+  utter_faq/ask_questions:
+  - text: Sure! What is your question?
+  utter_chitchat/tell_joke:
+  - buttons:
+    - payloads: /reply_joke
+      title: Coffee
+    - payloads: /reply_joke
+      title: Bread
+    text: What's noiser, coffee or bread?
+  utter_goodbye:
+  - text: Bye
+  utter_chitchat/bot_challenge:
+  - text: I am a SP chatbot, created by Singapore poly's DSAC.
+  utter_reply_joke:
+  - text: Bread. Because BreadTalk (bread talks) while Kopitiam (kopi diam).
+  utter_faq/ask_nlp:
+  - text: Natural Language Processing (NLP) is a machine’s ability to read written
+      language like a human, pulling relevant pieces of information, assigning value
+      to the words, and intelligently analyzing structured and unstructured text.
+  utter_faq/ask_ai:
+  - text: The powerful combination of AI and RPA can allow an organisation to process
+      data from virtually any source across virtually any system. This includes information
+      that is housed within multiple types of files and documents, including emails,
+      PDF files, scans and photos. By augmenting robots with cognitive abilities,
+      a company can achieve end-to-end process automation. In other words, they can
+      automate tasks that previously required human input. This means that workers
+      are able to focus their time on projects that benefit from their unique skillset
+      and expertise.
+  utter_faq/ai_business:
+  - text: According to a report by Accenture, businesses that successfully apply artificial
+      intelligence (AI) could create up to US$215 billion in gross value added (GVA)
+      in Singapore by 2035.
+  utter_ask_name:
+  - text: Sure! What is your name?
+  utter_ask_contact_no:
+  - text: What is your contact number?
+  utter_ask_organisation:
+  - text: What organisation are you from?
+  utter_register_verification:
+  - buttons:
+    - payload: /registration_success
+      title: Spot on!
+    - payload: /request_consultation
+      title: Oops, gotta re-enter!
+    text: "Awesome! A quick verification and we will contact you shortly.\nName:{Name}\n\
+      Contact Number: {Contact_Number} \nOrganisation : {Organisation}"
+  utter_register_thanks:
+  - text: Thank you for registering with us!
+  utter_ask_continue:
+  - text: Do you still want to continue registering?
+  utter_data_removed:
+  - text: Ok! All the data has been removed from our database!
+  utter_please_rephrase:
+  - text: I'm sorry, I didn't quite understand that. Could you please rephrase?
+actions:
+- action_video
+- action_submit
+- action_reset_slots
+- validate_name_form
+forms:
+  name_form:
+    contact_no:
+    - entity: number
+      type: from_text
+    name:
+    - entity: name
+      type: from_text
+    organisation:
+    - entity: organisation
+      type: from_text

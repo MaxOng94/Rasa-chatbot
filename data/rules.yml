@@ -1,0 +1,71 @@
+version: "2.0"
+stories:
+- story: Story from Conversation ID b515f46a924c43ff938232a3e684be26
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: faq
+  - action: utter_faq
+  - intent: chitchat/bot_challenge
+  - action: utter_chitchat/bot_challenge
+- story: Story from Conversation ID ea0fd08e842e412fb2ea18782361c483
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: greet
+  - action: utter_greet
+  - intent: chitchat/tell_joke
+  - action: utter_chitchat
+  - intent: reply_joke
+  - action: utter_reply_joke
+rules:
+- rule: reply joke every time
+  steps:
+  - intent: reply_joke
+  - action: utter_reply_joke
+- rule: welcome user
+  conversation_start: true
+  steps:
+  - intent: greet
+  - action: utter_greet
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: chitchat/bot_challenge
+  - action: utter_chitchat/bot_challenge
+- rule: respond to FAQs
+  steps:
+  - intent: faq
+  - action: utter_faq
+- rule: respond to chitchat
+  steps:
+  - intent: chitchat
+  - action: utter_chitchat
+- rule: ask user to rephrase whenever they send message with low confidence
+  steps:
+  - intent: nlu_fallback
+  - action: utter_please_rephrase
+- rule: remove data
+  condition:
+  - active_loop: name_form
+  steps:
+  - intent: stop_registration
+  - action: action_deactivate_loop
+  - active_loop: null
+  - action: utter_data_removed
+- rule: Submit form
+  condition:
+  - active_loop: name_form
+  steps:
+  - action: name_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_submit
+- rule: registration success
+  steps:
+  - intent: registration_success
+  - action: utter_register_thanks
